@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CartGo - Smart Price Tracker for Costco Shoppers in NZ &amp; Australia</title>
+  <meta name="description" content="Track your Costco purchases, get price drop alerts, and claim rebates within 30 days. CartGo is an independent, community-powered shopping companion for Costco members in New Zealand and Australia.">
+
+  <!-- Open Graph / Social -->
+  <meta property="og:title" content="CartGo - Smart Price Tracker for Costco Shoppers">
+  <meta property="og:description" content="Track your Costco purchases and get alerted when prices drop within 30 days. Independent app by Arisdy Limited.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://cartgo.app">
+  <meta property="og:image" content="https://cartgo.app/images/og-image.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="images/favicon.png">
+  <link rel="apple-touch-icon" href="images/og-image.png">
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://cartgo.app/">
+
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#00897B',
+            'primary-dark': '#00695C',
+            dark: '#1A1A2E',
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+    }
+  </style>
+</head>
+<body class="bg-white text-dark">
+
+  <!-- Non-Affiliation Notice -->
+  <div class="bg-gray-100 text-gray-600 text-xs text-center py-2 px-4">
+    CartGo is an independent app by <a href="about.html" class="underline hover:text-dark">Arisdy Limited</a>. Not affiliated with any warehouse club or retailer.
+  </div>
+
+  <!-- Navigation -->
+  <nav class="sticky top-0 bg-white/95 backdrop-blur-sm z-50 border-b border-gray-100">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+        <!-- Logo -->
+        <div class="flex items-center gap-2">
+          <div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/>
+            </svg>
+          </div>
+          <span class="text-xl font-bold text-dark">CartGo</span>
+        </div>
+
+        <!-- Desktop Nav -->
+        <div class="hidden md:flex items-center gap-8">
+          <a href="#features" class="text-gray-600 hover:text-dark transition">Features</a>
+          <a href="#how-it-works" class="text-gray-600 hover:text-dark transition">How It Works</a>
+          <a href="#pricing" class="text-gray-600 hover:text-dark transition">Pricing</a>
+          <a href="about.html" class="text-gray-600 hover:text-dark transition">About</a>
+          <a href="#download" class="bg-primary text-white px-4 py-2 rounded-lg font-medium hover:bg-primary-dark transition">Download</a>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <button id="mobile-menu-btn" class="md:hidden p-2">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden border-t border-gray-100 bg-white">
+      <div class="px-4 py-4 space-y-3">
+        <a href="#features" class="block text-gray-600 hover:text-dark">Features</a>
+        <a href="#how-it-works" class="block text-gray-600 hover:text-dark">How It Works</a>
+        <a href="#pricing" class="block text-gray-600 hover:text-dark">Pricing</a>
+        <a href="about.html" class="block text-gray-600 hover:text-dark">About</a>
+        <a href="#download" class="block bg-primary text-white px-4 py-2 rounded-lg font-medium text-center">Download</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="pt-16 pb-16 md:pt-24 md:pb-24 px-4">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid md:grid-cols-2 gap-12 items-center">
+        <!-- Text Content -->
+        <div class="text-center md:text-left">
+          <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-dark leading-tight mb-6">
+            Never Miss a Price Drop Again
+          </h1>
+          <p class="text-lg md:text-xl text-gray-600 mb-8 max-w-lg mx-auto md:mx-0">
+            Track your Costco purchases, get price drop alerts, and claim rebates within 30 days. CartGo is an independent app that alerts you when prices drop on items you've already bought.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+            <a href="#download" class="inline-flex items-center justify-center gap-2 bg-dark text-white px-6 py-3 rounded-xl font-medium hover:bg-gray-800 transition">
+              <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+              </svg>
+              <span>App Store</span>
+              <span class="text-xs opacity-70">Coming Soon</span>
+            </a>
+            <a href="#download" class="inline-flex items-center justify-center gap-2 bg-dark text-white px-6 py-3 rounded-xl font-medium hover:bg-gray-800 transition">
+              <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 01-.61-.92V2.734a1 1 0 01.609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.198l2.807 1.626a1 1 0 010 1.73l-2.808 1.626L15.206 12l2.492-2.491zM5.864 2.658L16.8 8.99l-2.302 2.302-8.634-8.634z"/>
+              </svg>
+              <span>Google Play</span>
+              <span class="text-xs opacity-70">Coming Soon</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Phone Mockup with Screenshot -->
+        <div class="flex justify-center">
+          <div class="relative w-72 h-[580px] bg-gradient-to-b from-gray-800 to-gray-900 rounded-[3rem] p-3 shadow-2xl">
+            <div class="w-full h-full bg-dark rounded-[2.5rem] overflow-hidden">
+              <img src="images/screenshots/specials.png" alt="CartGo Specials Screen" class="w-full h-full object-cover object-top">
+            </div>
+            <!-- Notch -->
+            <div class="absolute top-4 left-1/2 transform -translate-x-1/2 w-24 h-6 bg-dark rounded-full"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Problem Section -->
+  <section class="py-16 md:py-24 bg-gray-50 px-4">
+    <div class="max-w-4xl mx-auto text-center">
+      <h2 class="text-3xl md:text-4xl font-bold text-dark mb-6">
+        You're Leaving Money on the Counter
+      </h2>
+      <p class="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
+        Costco offers a 30-day price adjustment policy, meaning you can get money back if an item drops in price after you buy it. But who has time to:
+      </p>
+      <div class="grid md:grid-cols-3 gap-6 mb-10">
+        <div class="bg-white p-6 rounded-xl shadow-sm">
+          <div class="w-12 h-12 bg-teal-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
+            </svg>
+          </div>
+          <p class="text-gray-700 font-medium">Remember everything you bought</p>
+        </div>
+        <div class="bg-white p-6 rounded-xl shadow-sm">
+          <div class="w-12 h-12 bg-teal-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </div>
+          <p class="text-gray-700 font-medium">Check prices every week</p>
+        </div>
+        <div class="bg-white p-6 rounded-xl shadow-sm">
+          <div class="w-12 h-12 bg-teal-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+            </svg>
+          </div>
+          <p class="text-gray-700 font-medium">Track 30-day windows</p>
+        </div>
+      </div>
+      <div class="inline-block bg-primary/10 text-primary px-6 py-3 rounded-full font-semibold">
+        Most people miss out on $50-200+ per year in claimable rebates
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works Section -->
+  <section id="how-it-works" class="py-16 md:py-24 px-4">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold text-dark mb-4">
+          Three Steps to Free Money
+        </h2>
+        <p class="text-lg text-gray-600">It takes 30 seconds to start saving</p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        <!-- Step 1 -->
+        <div class="text-center">
+          <div class="w-16 h-16 bg-primary rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg shadow-primary/30">
+            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"/>
+            </svg>
+          </div>
+          <div class="text-sm font-bold text-primary mb-2">STEP 1</div>
+          <h3 class="text-xl font-bold text-dark mb-3">Scan Your Receipt</h3>
+          <p class="text-gray-600">Snap a photo of your receipt. Our AI extracts every item automatically.</p>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="text-center">
+          <div class="w-16 h-16 bg-primary rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg shadow-primary/30">
+            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+            </svg>
+          </div>
+          <div class="text-sm font-bold text-primary mb-2">STEP 2</div>
+          <h3 class="text-xl font-bold text-dark mb-3">We Track Prices</h3>
+          <p class="text-gray-600">CartGo monitors prices at your local warehouse every day using community data.</p>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="text-center">
+          <div class="w-16 h-16 bg-primary rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg shadow-primary/30">
+            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/>
+            </svg>
+          </div>
+          <div class="text-sm font-bold text-primary mb-2">STEP 3</div>
+          <h3 class="text-xl font-bold text-dark mb-3">Get Alerted</h3>
+          <p class="text-gray-600">When a price drops within 30 days of your purchase, we notify you so you can claim the difference.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- App Screenshots Gallery -->
+  <section class="py-16 md:py-24 bg-dark px-4 overflow-hidden">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
+          See CartGo in Action
+        </h2>
+        <p class="text-lg text-gray-400">Powerful features at your fingertips</p>
+      </div>
+
+      <!-- Screenshot Carousel -->
+      <div class="flex gap-6 overflow-x-auto pb-8 snap-x snap-mandatory scrollbar-hide -mx-4 px-4 md:justify-center md:flex-wrap">
+        <!-- Specials -->
+        <div class="flex-shrink-0 snap-center">
+          <div class="w-56 md:w-64">
+            <div class="bg-gradient-to-b from-gray-700 to-gray-800 rounded-[2rem] p-2 shadow-xl">
+              <img src="images/screenshots/specials.png" alt="Specials Feed" class="w-full rounded-[1.5rem]">
+            </div>
+            <p class="text-center text-white font-medium mt-4">Specials Feed</p>
+            <p class="text-center text-gray-400 text-sm">Never miss a deal</p>
+          </div>
+        </div>
+
+        <!-- Receipt Scanner -->
+        <div class="flex-shrink-0 snap-center">
+          <div class="w-56 md:w-64">
+            <div class="bg-gradient-to-b from-gray-700 to-gray-800 rounded-[2rem] p-2 shadow-xl">
+              <img src="images/screenshots/receipt.png" alt="Receipt Scanner" class="w-full rounded-[1.5rem]">
+            </div>
+            <p class="text-center text-white font-medium mt-4">Receipt Scanner</p>
+            <p class="text-center text-gray-400 text-sm">Snap and save instantly</p>
+          </div>
+        </div>
+
+        <!-- Rebates -->
+        <div class="flex-shrink-0 snap-center">
+          <div class="w-56 md:w-64">
+            <div class="bg-gradient-to-b from-gray-700 to-gray-800 rounded-[2rem] p-2 shadow-xl">
+              <img src="images/screenshots/rebates.png" alt="My Rebates" class="w-full rounded-[1.5rem]">
+            </div>
+            <p class="text-center text-white font-medium mt-4">My Rebates</p>
+            <p class="text-center text-gray-400 text-sm">Track claimable savings</p>
+          </div>
+        </div>
+
+        <!-- Watchlist -->
+        <div class="flex-shrink-0 snap-center">
+          <div class="w-56 md:w-64">
+            <div class="bg-gradient-to-b from-gray-700 to-gray-800 rounded-[2rem] p-2 shadow-xl">
+              <img src="images/screenshots/watchlist.png" alt="Watchlist" class="w-full rounded-[1.5rem]">
+            </div>
+            <p class="text-center text-white font-medium mt-4">Watchlist</p>
+            <p class="text-center text-gray-400 text-sm">Monitor price drops</p>
+          </div>
+        </div>
+
+        <!-- Shopping Cart -->
+        <div class="flex-shrink-0 snap-center">
+          <div class="w-56 md:w-64">
+            <div class="bg-gradient-to-b from-gray-700 to-gray-800 rounded-[2rem] p-2 shadow-xl">
+              <img src="images/screenshots/cart.png" alt="Shopping Cart" class="w-full rounded-[1.5rem]">
+            </div>
+            <p class="text-center text-white font-medium mt-4">Shopping Cart</p>
+            <p class="text-center text-gray-400 text-sm">Know your total</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section id="features" class="py-16 md:py-24 bg-gray-50 px-4">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold text-dark mb-4">
+          Everything You Need to Save
+        </h2>
+        <p class="text-lg text-gray-600">Powerful features, simple to use</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Feature 1 -->
+        <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition">
+          <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mb-5">
+            <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+            </svg>
+          </div>
+          <h3 class="text-lg font-bold text-dark mb-2">AI Receipt Scanner</h3>
+          <p class="text-gray-600">Snap a photo, get all items extracted in seconds. No manual entry required.</p>
+        </div>
+
+        <!-- Feature 2 -->
+        <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition">
+          <div class="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center mb-5">
+            <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/>
+            </svg>
+          </div>
+          <h3 class="text-lg font-bold text-dark mb-2">Price Drop Alerts</h3>
+          <p class="text-gray-600">Push notifications when you're eligible for a rebate. Never miss a claim.</p>
+        </div>
+
+        <!-- Feature 3 -->
+        <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition">
+          <div class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center mb-5">
+            <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+            </svg>
+          </div>
+          <h3 class="text-lg font-bold text-dark mb-2">Product Watchlist</h3>
+          <p class="text-gray-600">Follow any product to get notified of future deals, even before you buy.</p>
+        </div>
+
+        <!-- Feature 4 -->
+        <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition">
+          <div class="w-12 h-12 bg-orange-100 rounded-xl flex items-center justify-center mb-5">
+            <svg class="w-6 h-6 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+            </svg>
+          </div>
+          <h3 class="text-lg font-bold text-dark mb-2">Multi-Location</h3>
+          <p class="text-gray-600">Supports warehouse locations across New Zealand and Australia.</p>
+        </div>
+
+        <!-- Feature 5 -->
+        <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition">
+          <div class="w-12 h-12 bg-pink-100 rounded-xl flex items-center justify-center mb-5">
+            <svg class="w-6 h-6 text-pink-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
+            </svg>
+          </div>
+          <h3 class="text-lg font-bold text-dark mb-2">Community Powered</h3>
+          <p class="text-gray-600">Crowdsourced pricing keeps data fresh and accurate across all stores.</p>
+        </div>
+
+        <!-- Feature 6 -->
+        <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition">
+          <div class="w-12 h-12 bg-teal-100 rounded-xl flex items-center justify-center mb-5">
+            <svg class="w-6 h-6 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </div>
+          <h3 class="text-lg font-bold text-dark mb-2">Shopping Cart</h3>
+          <p class="text-gray-600">Build your shopping list with real-time totals and instant rebate calculations.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="py-16 md:py-24 px-4">
+    <div class="max-w-4xl mx-auto">
+      <div class="grid grid-cols-3 gap-8 text-center">
+        <div>
+          <div class="text-3xl md:text-4xl font-extrabold text-primary mb-2">12+</div>
+          <div class="text-gray-600 text-sm md:text-base">Locations Supported</div>
+        </div>
+        <div>
+          <div class="text-3xl md:text-4xl font-extrabold text-primary mb-2">NZ & AU</div>
+          <div class="text-gray-600 text-sm md:text-base">Coverage</div>
+        </div>
+        <div>
+          <div class="text-3xl md:text-4xl font-extrabold text-primary mb-2">30</div>
+          <div class="text-gray-600 text-sm md:text-base">Day Rebate Window</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Section -->
+  <section id="pricing" class="py-16 md:py-24 bg-gray-50 px-4">
+    <div class="max-w-4xl mx-auto">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-dark mb-4">
+          Free to Start. Pro When You're Ready.
+        </h2>
+        <p class="text-lg text-gray-600">Try all Pro features free for 2 months</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8 max-w-3xl mx-auto">
+        <!-- Free Tier -->
+        <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-200">
+          <h3 class="text-xl font-bold text-dark mb-2">Free</h3>
+          <div class="text-3xl font-extrabold text-dark mb-4">$0 <span class="text-base font-normal text-gray-500">forever</span></div>
+          <ul class="space-y-3 text-gray-600 mb-8">
+            <li class="flex items-center gap-2">
+              <svg class="w-5 h-5 text-primary flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              Product search & browsing
+            </li>
+            <li class="flex items-center gap-2">
+              <svg class="w-5 h-5 text-primary flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              Stock card scanner
+            </li>
+            <li class="flex items-center gap-2">
+              <svg class="w-5 h-5 text-primary flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              Receipt scanner
+            </li>
+            <li class="flex items-center gap-2">
+              <svg class="w-5 h-5 text-primary flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              Shopping cart
+            </li>
+            <li class="flex items-center gap-2">
+              <svg class="w-5 h-5 text-primary flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              Specials feed
+            </li>
+          </ul>
+        </div>
+
+        <!-- Pro Tier -->
+        <div class="bg-white p-8 rounded-2xl shadow-md border-2 border-primary relative">
+          <div class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-primary text-white text-xs font-bold px-3 py-1 rounded-full">2 MONTHS FREE</div>
+          <h3 class="text-xl font-bold text-dark mb-2">Pro</h3>
+          <div class="text-3xl font-extrabold text-dark mb-4">$4.99 <span class="text-base font-normal text-gray-500">/month NZD</span></div>
+          <ul class="space-y-3 text-gray-600 mb-8">
+            <li class="flex items-center gap-2">
+              <svg class="w-5 h-5 text-primary flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              Everything in Free, plus:
+            </li>
+            <li class="flex items-center gap-2">
+              <svg class="w-5 h-5 text-primary flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              Price drop alerts (push notifications)
+            </li>
+            <li class="flex items-center gap-2">
+              <svg class="w-5 h-5 text-primary flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              Product watchlist
+            </li>
+            <li class="flex items-center gap-2">
+              <svg class="w-5 h-5 text-primary flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              Rebate tracking & claims
+            </li>
+            <li class="flex items-center gap-2">
+              <svg class="w-5 h-5 text-primary flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              No ads, ever
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section id="faq" class="py-16 md:py-24 px-4">
+    <div class="max-w-3xl mx-auto">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-dark mb-4">
+          Frequently Asked Questions
+        </h2>
+      </div>
+
+      <div class="space-y-6">
+        <div class="bg-gray-50 p-6 rounded-xl">
+          <h3 class="font-bold text-dark mb-2">What is CartGo?</h3>
+          <p class="text-gray-600">CartGo is an independent price tracking app that helps Costco members in New Zealand and Australia track their purchases and get alerted when prices drop within 30 days, so they can claim a refund at the Costco service desk.</p>
+        </div>
+
+        <div class="bg-gray-50 p-6 rounded-xl">
+          <h3 class="font-bold text-dark mb-2">Is CartGo affiliated with any retailer?</h3>
+          <p class="text-gray-600">No. CartGo is developed by Arisdy Limited, a New Zealand software company. We are not affiliated with, endorsed by, or connected to any warehouse club or retailer. CartGo is an independent consumer tool.</p>
+        </div>
+
+        <div class="bg-gray-50 p-6 rounded-xl">
+          <h3 class="font-bold text-dark mb-2">How does price tracking work?</h3>
+          <p class="text-gray-600">CartGo uses community-powered data. When users scan Costco price tags in-store, the price information is shared (anonymously) with all CartGo users. This crowdsourced approach keeps pricing data accurate and up-to-date.</p>
+        </div>
+
+        <div class="bg-gray-50 p-6 rounded-xl">
+          <h3 class="font-bold text-dark mb-2">Is CartGo free?</h3>
+          <p class="text-gray-600">CartGo is free to download and use. Core features like scanning, searching, and the shopping cart are always free. A Pro subscription ($4.99/month NZD) unlocks price drop alerts, watchlist, and rebate tracking. New users get a 2-month free trial of Pro.</p>
+        </div>
+
+        <div class="bg-gray-50 p-6 rounded-xl">
+          <h3 class="font-bold text-dark mb-2">What data does CartGo collect?</h3>
+          <p class="text-gray-600">CartGo collects your email (via Google or Apple Sign-In), scanned purchase data, and approximate location (to detect which store you're near). Receipt images are processed by AI and immediately discarded. We never sell your data. See our <a href="privacy.html" class="text-primary hover:underline">Privacy Policy</a> for full details.</p>
+        </div>
+
+        <div class="bg-gray-50 p-6 rounded-xl">
+          <h3 class="font-bold text-dark mb-2">How do I delete my account?</h3>
+          <p class="text-gray-600">You can delete your account directly in the app (Profile > Delete Account) or by emailing <a href="mailto:support@cartgo.app" class="text-primary hover:underline">support@cartgo.app</a>. All your data is permanently removed. See our <a href="delete-account.html" class="text-primary hover:underline">account deletion page</a> for details.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA Section -->
+  <section id="download" class="py-16 md:py-24 bg-dark px-4">
+    <div class="max-w-4xl mx-auto text-center">
+      <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
+        Start Tracking Your Savings
+      </h2>
+      <p class="text-lg text-gray-400 mb-8">
+        Free to download. No credit card required.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="#" class="inline-flex items-center justify-center gap-3 bg-white text-dark px-8 py-4 rounded-xl font-medium hover:bg-gray-100 transition">
+          <svg class="w-8 h-8" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+          </svg>
+          <div class="text-left">
+            <div class="text-xs opacity-60">Download on the</div>
+            <div class="text-lg font-semibold">App Store</div>
+          </div>
+          <span class="ml-2 text-xs bg-gray-200 text-gray-600 px-2 py-1 rounded-full">Coming Soon</span>
+        </a>
+        <a href="#" class="inline-flex items-center justify-center gap-3 bg-white text-dark px-8 py-4 rounded-xl font-medium hover:bg-gray-100 transition">
+          <svg class="w-8 h-8" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 01-.61-.92V2.734a1 1 0 01.609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.198l2.807 1.626a1 1 0 010 1.73l-2.808 1.626L15.206 12l2.492-2.491zM5.864 2.658L16.8 8.99l-2.302 2.302-8.634-8.634z"/>
+          </svg>
+          <div class="text-left">
+            <div class="text-xs opacity-60">Get it on</div>
+            <div class="text-lg font-semibold">Google Play</div>
+          </div>
+          <span class="ml-2 text-xs bg-gray-200 text-gray-600 px-2 py-1 rounded-full">Coming Soon</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-dark border-t border-gray-800 py-12 px-4">
+    <div class="max-w-6xl mx-auto">
+      <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+        <!-- Logo -->
+        <div class="flex items-center gap-2">
+          <div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/>
+            </svg>
+          </div>
+          <span class="text-xl font-bold text-white">CartGo</span>
+        </div>
+
+        <!-- Links -->
+        <div class="flex flex-wrap items-center justify-center gap-6 text-gray-400">
+          <a href="about.html" class="hover:text-white transition">About</a>
+          <a href="privacy.html" class="hover:text-white transition">Privacy Policy</a>
+          <a href="terms.html" class="hover:text-white transition">Terms of Service</a>
+          <a href="delete-account.html" class="hover:text-white transition">Delete Account</a>
+          <a href="mailto:support@cartgo.app" class="hover:text-white transition">Contact</a>
+        </div>
+      </div>
+
+      <div class="mt-8 pt-8 border-t border-gray-800 text-center text-gray-500 text-sm">
+        <p>&copy; 2026 Arisdy Limited. All rights reserved.</p>
+        <p class="mt-2">CartGo is an independent product. Not affiliated with, endorsed by, or connected to any warehouse club or retailer.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Mobile Menu Toggle Script -->
+  <script>
+    const menuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    // Close menu when clicking a link
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+      });
+    });
+  </script>
+</body>
+</html>
