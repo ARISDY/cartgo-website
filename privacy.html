@@ -79,7 +79,7 @@
         <h3 class="text-lg font-semibold text-dark mt-6 mb-3">2.1 Information You Provide</h3>
         <ul class="list-disc list-inside text-gray-600 space-y-2 ml-4">
           <li><strong>Account Information:</strong> Email address when you sign in with Google or Apple (OAuth authentication)</li>
-          <li><strong>Purchase Data:</strong> Receipt images, product codes, prices, and purchase dates that you scan</li>
+          <li><strong>Purchase Data:</strong> Receipt images, stock card images, product codes, prices, and purchase dates that you scan</li>
           <li><strong>Watchlist Data:</strong> Products you choose to follow for price alerts</li>
         </ul>
 
@@ -113,12 +113,13 @@
       <section class="mb-10">
         <h2 class="text-xl font-bold text-dark mb-4">4. AI Processing</h2>
         <p class="text-gray-600 mb-4">
-          CartGo uses AI services (such as Google Gemini) to extract product information from receipt images. When you scan a receipt:
+          CartGo uses AI services (such as Google Gemini) to extract product information from receipt and stock card images. When you scan a receipt or stock card:
         </p>
         <ul class="list-disc list-inside text-gray-600 space-y-2 ml-4">
           <li>The image is uploaded to our secure servers for processing</li>
           <li>AI extracts product codes, names, and prices from the image</li>
-          <li>Receipt images are stored temporarily (up to 7 days) to allow you to review the extracted data, then automatically deleted</li>
+          <li>Receipt images are stored temporarily (up to 7 days) while you review the extracted data, then automatically deleted</li>
+          <li>Stock card images are stored temporarily while processing, then automatically deleted after successful extraction or within 7 days</li>
           <li>Only the extracted product data is retained long-term</li>
           <li>Google's AI processes data according to their privacy policy</li>
         </ul>
@@ -144,6 +145,7 @@
           <li><strong>Account Data:</strong> Until you delete your account</li>
           <li><strong>Purchase History:</strong> 12 months, then automatically deleted</li>
           <li><strong>Receipt Images:</strong> Temporarily stored for up to 7 days while you review extracted data, then automatically deleted</li>
+          <li><strong>Stock Card Images:</strong> Temporarily stored while processing, then automatically deleted after successful extraction or within 7 days</li>
           <li><strong>Price Contributions:</strong> Indefinitely (anonymized)</li>
         </ul>
       </section>
